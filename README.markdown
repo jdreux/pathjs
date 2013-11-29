@@ -20,6 +20,9 @@ Identical to the original pathjs by mtrpcic, except a 'first' method is availabl
     
     Path.map("#/users").to(function(){
         alert("Users!");
+    }).first(function(){
+        //I will only be executed the first time this route is invoked. 
+        //Useful for binding events, etc
     });
     
     Path.map("#/comments").to(function(){
