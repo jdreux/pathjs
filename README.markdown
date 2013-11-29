@@ -2,6 +2,8 @@
 
 PathJS is a lightweight, client-side routing library that allows you to create "single page" applications using Hashbangs and/or HTML5 pushState.
 
+Identical to the original pathjs by mtrpcic, except a 'first' method is available.
+
 # Features #
 * Lightweight
 * Supports the HTML5 History API, the 'onhashchange' method, and graceful degredation
