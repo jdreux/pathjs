@@ -1,5 +1,5 @@
 var Path = {
-    'version': "0.8.4",
+    'version': "0.8.5",
     'map': function (path) {
         if (Path.routes.defined.hasOwnProperty(path)) {
             return Path.routes.defined[path];
@@ -148,6 +148,10 @@ Path.core.route.prototype = {
         this.action = fn;
         return this;
     },
+    'first': function (fns) {
+        this.do_first = fns;
+        return this;
+    },
     'enter': function (fns) {
         if (fns instanceof Array) {
             this.do_enter = this.do_enter.concat(fns);
@@ -186,7 +190,11 @@ Path.core.route.prototype = {
             }
         }
         if (!halt_execution) {
+            if(Path.routes.defined[this.path].do_first && !Path.routes.defined[this.path].visited){
+                Path.routes.defined[this.path].do_first();
+            }
             Path.routes.defined[this.path].action();
+            Path.routes.defined[this.path].visited = true;
         }
     }
 };
