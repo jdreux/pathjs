@@ -190,10 +190,10 @@ Path.core.route.prototype = {
             }
         }
         if (!halt_execution) {
+            Path.routes.defined[this.path].action();
             if(Path.routes.defined[this.path].do_first && !Path.routes.defined[this.path].visited){
                 Path.routes.defined[this.path].do_first();
             }
-            Path.routes.defined[this.path].action();
             Path.routes.defined[this.path].visited = true;
         }
     }
